@@ -1,0 +1,19 @@
+#!/bin/env ruby
+# frozen_string_literal: true
+
+require "json"
+
+# Load the examples from the JSON file
+if ARGV[0]
+  path = ARGV[0]
+  all_rspec_examples = JSON.parse(File.read(path))["examples"]
+  changed_files = $stdin.read.split("\n")
+
+  all_rspec_examples.each do |test|
+    puts test["test_file_path"] if changed_files.include?(test["described_class_defined_source_location"])
+  end
+
+else
+  warn "Usage: git diff --name-only origin/develop | rspec-big-infer <path to JSON test map file>"
+  exit 1
+end

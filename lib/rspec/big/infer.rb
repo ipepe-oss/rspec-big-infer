@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "infer/version"
+require_relative "infer/formatter"
 
 module Rspec
   module Big
