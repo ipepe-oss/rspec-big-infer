@@ -9,8 +9,8 @@ if ARGV[0]
   all_rspec_examples = JSON.parse(File.read(path))["examples"]
   changed_files = $stdin.read.split("\n")
 
-  all_rspec_examples.each do |test|
-    puts test["test_file_path"] if changed_files.include?(test["described_class_defined_source_location"])
+  all_rspec_examples.compact.uniq.each do |test|
+    puts test["test_file_path"] if changed_files.include?(test["described_class_defined_source_location"]) || changed_files.include?(test["test_file_path"])
   end
 
 else
