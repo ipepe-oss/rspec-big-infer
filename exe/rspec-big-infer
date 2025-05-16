@@ -10,7 +10,10 @@ if ARGV[0]
   changed_files = $stdin.read.split("\n")
 
   all_rspec_examples.compact.uniq.each do |test|
-    puts test["test_file_path"] if changed_files.include?(test["described_class_defined_source_location"]) || changed_files.include?(test["test_file_path"])
+    if changed_files.include?(test["described_class_defined_source_location"]) ||
+       changed_files.include?(test["test_file_path"])
+      puts test["test_file_path"]
+    end
   end
 
 else
