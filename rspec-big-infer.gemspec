@@ -4,7 +4,7 @@ require_relative "lib/rspec/big/infer/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-big-infer"
-  spec.version       = Rspec::Big::Infer::VERSION
+  spec.version       = RSpec::Big::Infer::VERSION
   spec.authors       = ["Patryk Ptasinski"]
   spec.email         = ["patryk@ipepe.pl"]
 

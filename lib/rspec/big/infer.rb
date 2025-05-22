@@ -3,7 +3,7 @@
 require_relative "infer/version"
 require_relative "infer/formatter"
 
-module Rspec
+module RSpec
   module Big
     module Infer
       class Error < StandardError; end

@@ -2,7 +2,7 @@
 
 require "rspec/core/formatters/json_formatter"
 
-module Rspec
+module RSpec
   module Big
     module Infer
       class Formatter < RSpec::Core::Formatters::JsonFormatter
