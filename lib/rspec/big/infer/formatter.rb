@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "rspec/core"
 require "rspec/core/formatters/json_formatter"
 
 module RSpec
