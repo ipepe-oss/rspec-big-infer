@@ -8,7 +8,7 @@ module RSpec
   module Big
     module Infer
       class Error < StandardError; end
-      # Your code goes here...
+      # Provides helper tools for inferring which specs to run.
     end
   end
 end
