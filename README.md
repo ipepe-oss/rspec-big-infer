@@ -35,7 +35,7 @@ echo "Updating git repository to get the latest changes from develop branch..."
 git fetch origin develop > /dev/null 2>&1 || echo "Warning: Could not fetch from origin/develop. Continuing without update."
 
 echo "Calculating relationships between files..."
-bundle exec rspec --dry-run --format Rspec::Big::Infer::Formatter --out tmp/rspec_infer.json 2> /dev/null
+bundle exec rspec --dry-run --format RSpec::Big::Infer::Formatter --out tmp/rspec_infer.json 2> /dev/null
 
 echo "Parsing rspec_infer.json and suggesting tests to run..."
 git diff --name-only origin/develop | bundle exec rspec-big-infer tmp/rspec_infer.json
