@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables   = ["rspec-big-infer"]
   spec.require_paths = ["lib"]
   spec.add_dependency "rspec-core", "~> 3"
+  spec.add_development_dependency "rspec", "~> 3"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
