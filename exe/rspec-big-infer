@@ -9,12 +9,14 @@ if ARGV[0]
   all_rspec_examples = JSON.parse(File.read(path))["examples"]
   changed_files = $stdin.read.split("\n")
 
-  all_rspec_examples.compact.uniq.each do |test|
-    if changed_files.include?(test["described_class_defined_source_location"]) ||
-       changed_files.include?(test["test_file_path"])
-      puts test["test_file_path"]
-    end
-  end
+  puts(
+    all_rspec_examples.compact.map do |test|
+      if changed_files.include?(test["described_class_defined_source_location"]) ||
+        changed_files.include?(test["test_file_path"])
+        test["test_file_path"]
+      end
+    end.compact.uniq.join("\n")
+  )
 
 else
   warn "Usage: git diff --name-only origin/develop | rspec-big-infer <path to JSON test map file>"
