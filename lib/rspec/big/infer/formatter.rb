@@ -12,7 +12,9 @@ module RSpec
         private
 
         def format_example(example)
-          return unless example.example_group.described_class.is_a?(Class)
+          return if already_processed?(example.file_path)
+
+          already_processed!(example.file_path)
 
           {
             test_file_path: relative_path(example.file_path),
@@ -21,6 +23,8 @@ module RSpec
         end
 
         def source_location(klass)
+          return unless klass.is_a?(Class)
+
           relative_path(klass.const_source_location(klass.name).first)
         end
 
@@ -32,6 +36,19 @@ module RSpec
           else
             path
           end
+        end
+
+        def already_processed!(test_file_path)
+          # Prevents the formatter from processing the same file multiple times
+          @already_processed ||= Set.new
+          return if @already_processed.include?(test_file_path)
+
+          @already_processed.add(test_file_path)
+        end
+
+        def already_processed?(test_file_path)
+          @already_processed ||= Set.new
+          @already_processed.include?(test_file_path)
         end
       end
     end
