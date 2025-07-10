@@ -12,7 +12,7 @@ module RSpec
         private
 
         def format_example(example)
-          return if already_processed?(example.file_path)
+          return {} if already_processed?(example.file_path)
 
           already_processed!(example.file_path)
 
